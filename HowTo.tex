@@ -1,0 +1,188 @@
+\chapter{How To in Deutsch}
+\label{sec:howtodeutsch}
+
+For english version, see below.
+
+Hier kann beschrieben werden, wie man das Problem gelöst hat und alle Schritte auf dem Weg zum Ergebnis.
+
+\section{How To: Wie man eine Abschlussarbeit schreibt}
+In diesem Abschnitt werden einige hilfreiche Tipps und Tricks für das Schreiben und im Umgang mit Latex vorgestellt.
+Für Überschriften kann man einheitliches ``Titlecase'' verwenden.
+
+\section{Latex-Umgebung}
+Fast jeder Texteditor eignet sich dazu, um Latex zu schreiben. Empfehlenswert ist aber eine Entwicklungsumgebung wie z.B. TeXStudio.
+
+\section{Beispiel für eine Abbildung}
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[width=7cm]{img/logochair.pdf}
+		\caption{Beispiel für eine Beschriftung.}
+		\label{fig:ToUseWithReference}
+	\end{center}
+\end{figure}
+
+Durch die \texttt{\bslash label} kann auf die Bilder mit
+\texttt{\bslash ref} verwiesen werden. Es ist wichtig, im Text kurz die Abbildung zu beschreiben. Zum Beispiel: In Abbildung~\ref{fig:ToUseWithReference} sieht man das Logo des Lehrstuhls, das als Beispiel einer Abbildung dienen soll. In blau ist der Text dargestellt, in schwarz das Symbol des Lehrstuhls.
+
+Die Tilde sorgt dafür, dass kein Umbruch zwischen Abbildung und Zahl vorkommt.
+
+
+\section{Beispiel für eine Tabelle}
+Klar strukturierte Tabellen lassen sich mit dem Booktabs-Paket erstellen, wie man in Tabelle~\ref{table:ranking} sehen kann.
+
+\begin{table}
+	\begin{center}
+		\begin{tabular}{cl}
+			\toprule
+			\textbf{Ranking} & \textbf{Letter} \\
+			\midrule
+			1 	& A \\
+			2 	& B\\
+			3	& C\\
+			4	& D\\
+			5	& E\\
+			6	& F\\
+			7	& G\\
+			\bottomrule
+		\end{tabular}
+		\caption{Ranking der Buchstaben im Alphabet.}
+		\label{table:ranking}
+	\end{center}
+\end{table}
+
+
+
+
+\section{Beispiele für Referenzen}
+Die Literaturhinweise werden im Text z.B.\ folgendermaßen verwendet:\\
+``..., wie in \cite{architecturemobilep2p} gezeigt.'' Der Stil der Referenz kann in der Datei ``ThesisCNaCC.tex'' angepasst werden (z.b. nur Zahlen anzeigen). Bei den meisten Papern kann direkt eine Bibtex-Quelle heruntergeladen werden (z.B. auf Google Scholar, Springer etc.). Zur Verwaltung der Literatur bieten sich Programme wie Jabref, Mendeley etc. an.
+
+\section{Schrifttypen}
+Als Schrifttyp wird Arial oder Roman empfohlen. Bitte beachten, dass
+Größen und Einheiten eine eigene Schreibweise haben:
+\begin{description}
+	\item[Kursivschrift:] physikalische Größen (z.B.~$U$ für Spannung),
+	Variablen~(z.B.~$x$), sowie Funktions- und Operatorzeichen, deren
+	Bedeutung frei gewählt werden kann (z.B.~$f(x)$)
+	\item[Matheformeln im Mathemodus:] $\frac{1}{1} \cdot 3 = 3$
+\end{description} 
+
+\section{Code der Arbeit}
+\subsection{GitLab} Am Lehrstuhl gibt es ein GitLab. Hier könnt ihr euren Code mit Versionskontrolle verwalten,
+und am Ende kann euer Betreuer ebenfalls auf den Code zugreifen. 
+
+Kontaktiert bei Interesse euren Betreuer, dieser wird euch weitere Details geben!
+
+\subsection{Hardware}
+Falls ihr mehr Rechenpower für euren Code/Simulationen benötigt, wendet euch bitte an euren Betreuer!
+
+
+\subsection{Code einfügen} Bitte kopiert nicht euren gesamten Code in die Arbeit! An manchen Stellen kann es aber sinnvoll sein,
+kurze Abschnitte zu zeigen. Das geht am besten mit Listings, as shown in Listing~\ref{helloJava}:
+
+\begin{lstlisting}[language=java, caption=Hello World in Java, label=helloJava]
+public static void main (String[]args) {
+System.print.out("Hello World");
+}
+\end{lstlisting}
+
+Man kann den Code auch direkt aus einer Datei darstellen (Datei ist nicht vorhanden, daher auskommentiert).
+%\lstinputlisting[language=Python, caption=Direkt aus Datei, label=direktDatei]{source_filename.py}
+
+Falls die Darstellung noch nicht gefällt, kann es angepasst werden: \url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Settings}
+
+\section{Abkürzungen}
+Falls man viele fachspezifische Abkürzungen in der Arbeit verwendet, bieten sich Latex-Pakete zur Unterstützung an, zum Beispiel acronym oder glossary.
+Beispiel acronym-Paket: Eine \ac{VM} wird benutzt. Mehrere \acp{VM} sind besser als eine \ac{VM}.
+Das ist eine lange Abkürzung: \ac{ssla}, bei der der Plural anders ist: \acp{ssla}.
+
+
+
+\chapter{How To in English}
+Here, you can describe how the problem was solved and the steps taken to obtain the results.
+
+\section{Latex-Environment}
+Almost every text editor can be used to write latex. However, an IDE is recommended e.g TeXStudio.
+
+
+\section{How To: Write a Thesis}
+In this section, some useful tricks for writing and for using latex are presented.
+For headings in general, you can use ``Titlecase'' for a consistent appearance.
+
+\section{Example for a Figure}
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[width=7cm]{img/logochair.pdf}
+			\caption{Example for a title of a figure.}
+			\label{fig:ToUseWithReference}
+		\end{center}
+	\end{figure}
+	
+	With the help of \texttt{\bslash label}, figures and tables can be addressed with the command \texttt{\bslash ref} 
+	It is important, to describe the figure in the text. For example: In Fig.~\ref{fig:ToUseWithReference}, one can see the logo of the chair. The text is shown in blue, and the in black the symbol of the chair.
+	
+	The tilde prevents a linebreak between Figure and the number.
+	
+	\section{Example for a table}
+	Clearly structured tables can be realized with the packet booktabs as you can see in Table~\ref{table:ranking}.
+	
+	\begin{table}
+		\begin{center}
+			\begin{tabular}{cl}
+				\toprule
+				\textbf{Ranking} & \textbf{Letter} \\
+				\midrule
+				1 	& A \\
+				2 	& B\\
+				3	& C\\
+				4	& D\\
+				5	& E\\
+				6	& F\\
+				7	& G\\
+				\bottomrule
+			\end{tabular}
+			\caption{Ranking of letters in the alphabet.}
+			\label{table:ranking}
+		\end{center}
+	\end{table}
+	
+	
+	\section{Example for References}
+	The literature reference in the text are used as follows:\\
+	``..., as shown in \cite{architecturemobilep2p}.'' The Style of the reference can be adapted in the file ``ThesisCNaCC.tex'' (e.g. show only numbers). For the most papers, you can directly download the Bibtex source (e.g. at Google Scholar, Springer etc.). For an easier management, you can use programs like Jabref, Mendeley etc.
+	
+	\section{Fonts}
+	As font, Arial or Roman is recommended. Please note that some units have their own font:
+	\begin{description}
+		\item[Italic:] physical units(e.g.~$V$ for Voltage),
+		Variables~(e.G.~$x$), and functions and operators (e.G.~$f(x)$)
+		\item[Mathematical formulas in math mode:] $\frac{1}{1} \cdot 3 = 4$
+	\end{description} 
+	
+	\section{Code of the Thesis}
+	\subsection{GitLab} At the chair, there is a GitLab you can use for managing your code with version control. In the end, your supervisor can easily access this code.
+	
+	If interested, please contact your supervisor!
+	
+	\subsection{Computing Power}
+	If you need hardware for your code/simulations, please contact your supervisor!
+	
+	
+	\subsection{Insert Code } Please do not copy your complete code in the thesis! But on some points it can be helpful to show snippets. You can use Listings:
+	
+	\begin{lstlisting}[language=java, caption=Hello World in Java, label=helloJava]
+	public static void main (String[]args) {
+	System.print.out("Hello World");
+	}
+	\end{lstlisting}
+	
+	You can import the code directly from a file, too (File does not exist here)
+	%\lstinputlisting[language=Python, caption=Direkt aus Datei, label=direktDatei]{source_filename.py}
+	
+	The appearance can be adapted: \url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Settings}
+	
+	\section{Abbreviations}
+	If you are using many abbreviations, you can use latex-packages like acronym or glossary. For exmaple a \ac{VM} is used. More \acp{VM} are better than one \ac{VM}.
+	This is a very long abbreviation in german: \ac{ssla}, with a different plural: \acp{ssla}.
+	
+
