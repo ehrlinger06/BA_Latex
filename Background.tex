@@ -2,5 +2,18 @@
 \label{chap:background}
 \section{Setting}
 \label{cap:background_sec:setting}
-Hallo dies ist ein kurzer Test
+Transformator: anliegende Last
+Bus: aktuelle Spannung
+EV: arrival-time, departure-time, available, current-soc, possible-charge-rate
+C: P-out
+
 \section{Reiner VDE-Controller}
+\label{cap:background_sec:pureVDE}
+Die aktuell im Stromnetz vorliegende Situation, wird durch die Verwendung des Anschlusses ans Stromnetz gemäß der Technischen Anschlussregel Niederspannung(VDE-AR-N 4100) simuliert. Die Anschlussregel gibt vor, wie sich die aktuell anliegende Spannung auf den möglichen Leistungsbezug des Anschlusses auswirkt. Per Definition wird von einer Normspannung von 230 Volt ausgegangen, liegen weniger als 93\% dieser Normspannung vor, wird die Leistung linear reduziert, wenn der Wert der anliegenden Spannung unter 88\% der Normspannung fällt, wird der Leistungsbezug komplett eingestellt, bis die Spannung wieder auf mindestens 88\% der Normspannung von 230 Volt steigt. Bei einer Spannung zwischen 93\% und 88\% der Normspannung wird der mögliche Leistungsbezug, in diesem Fall die Ladeleistung, linear von voller geforderter Leistung bis zur Abschaltung reduziert.\\
+Bis auf die Leistungsreduktion werden von dieser Anschlussregel keine weiteren Maßnahmen getroffen um die Spannung im Netz stabil zu halten. 
+
+\section{Slotted Aloha, Wartezeit nur über Teilnehmer}
+\label{cap:background_sec:SA_participants}
+Diese Art der Verwendung des Slotted ALOHA Protokolls, definiert eine Kollision, wenn der aktuell vorliegende Spannungswert unter 93\% der Normspannung von 230 Volt fällt. Tritt eine Kollision auf, wird die aktuell anliegende Leistung auf Null reduziert und eine Wartezeit bestimmt, in welcher nicht versucht wird sich mit dem Netz zu verbinden. Die Wartezeit wird per Zufall bestimmt, sie wird aus einem Intervall gezogen, welches bei Null beginnt und nach oben von der aktuell Anzahl an Fahrzeugen begrenzt wird, welche aktuell mit einer beliebigen im Netz installierten Ladestation verbunden sind. Nach dem Ablauf der Wartezeit wird wieder versucht Leistung aus dem Netz zu beziehen, bis entweder keine Leistung mehr benötigt wird oder wieder eine Kollision auftritt.\\
+Bei dieser Art der Bestimmung der Wartezeit wird weder der aktuelle Ladezustand, noch die verbleibende Zeit des Fahrzeuges am Ladegerät bis zur nächsten Abfahrt berücksichtigt, lediglich die Zahl der aktuell mit dem Netz verbunden Fahrzeuge, egal ob ladend, wartend oder bereits fertig geladen, wird berücksichtigt.
+
