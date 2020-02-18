@@ -166,25 +166,26 @@ Supervisors:   & \thesisprof \\
 } \cleardoublepage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\let\cleardoublepage\clearpage
 
 % MAIN PART:
 
 % Erklärung
 %\include{Legals}
 %\include{Abstract}
-%\tableofcontents
+\tableofcontents
 
 
-%\include{Introduction}
+
+\include{Introduction}
 \include{Background}
 % Main part can have multiple chaper-files, e.g.:
-%\include{Body}
+\include{Body}
 %\include{HowTo}
-%\include{Results}
+\include{Evaluation}
 \include{RelatedWork}
-%\include{Conclusions}
-%\input{Zusammenfassung}
+\include{Conclusions}
+
 
 
 %\appendix
