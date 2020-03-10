@@ -8,7 +8,7 @@
 \newcommand{\thesistype}{Bachelor Thesis}
 \newcommand{\thesisdate}{xx/03/2020}
 \newcommand{\thesisprof}{Prof. Dr.-Ing. Hermann de Meer}
-\newcommand{\thesissecondprof}{??}
+\newcommand{\thesissecondprof}{}
 \newcommand{\supervisor}{Dominik Danner,~M.~Sc.}
 \newcommand{\chair}{Chair of Computer Networks \& Communications}
 
@@ -77,6 +77,7 @@ Web:~{\small
 \usepackage{amssymb}
 \usepackage{listings}
 \usepackage{booktabs}
+\usepackage{mathtools}
 
 %hyperref for nice PDF output
 \usepackage[pdftex, bookmarks=true]{hyperref}
@@ -160,7 +161,6 @@ Web:~{\small
 Date:       & \thesisdate %%(\LaTeX{}$2_\epsilon$ run \today)
 \smallskip \\
 Supervisors:   & \thesisprof \\
-&\thesissecondprof \\
 	& \supervisor \\
 \end{tabular}}
 } \cleardoublepage
@@ -171,8 +171,8 @@ Supervisors:   & \thesisprof \\
 % MAIN PART:
 
 % Erklärung
-%\include{Legals}
-%\include{Abstract}
+\include{Legals}
+\include{Abstract}
 \tableofcontents
 
 
