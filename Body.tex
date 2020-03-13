@@ -8,10 +8,10 @@ Ein Ladeservice startet, wenn sich ein Elektrofahrzeug mit einem passenden Ladeg
 	\label{Abb_Ladeservice}
 \end{figure}
 
-In der Abbildung \ref{Abb_Ladeservice} wird die Aktivität innerhalb eines Ladeservices aufgezeigt. Der dargestellte Ladeservice enthält zwei Ladevorgänge. Die Länge beider Ladevorgänge zusammen ist kürzer als die Länge des Ladeservices. Das Enden des letzten Ladevorgangs vor dem Enden des Ladeservices lässt darauf schließen, dass der Ladeservice voll erfüllt wurde. Somit wurde innerhalb des Ladeservices ein Ladezustand von 100\% erreicht.
+In der Abbildung \ref{Abb_Ladeservice} wird die Aktivität innerhalb eines Ladeservices aufgezeigt. Der dargestellte Ladeservice enthält zwei Ladevorgänge. Die Länge beider Ladevorgänge zusammen ist kürzer als die Länge des Ladeservices.
 \section{Datengrundlage}
 \label{cap:background_sec:setting}
-Während eines Ladeservices kann für die Beurteilung der aktuellen Situation auf verschiedene Daten zugegriffen werden. Es ist die Ankunftszeit, also der Beginn des Ladeservices, bekannt, ebenso wie die Abfahrtszeit, welche das Ende des Ladeservices markiert. Neben der Anfangs- und Endzeit, ist auch der aktuelle Zeitpunkt bekannt. Die aktuellezeit erhöht sich periodisch um immer den selben Wert und kann so in diskrete Zeiteinheiten eingeteilt werden. Des weiteren ist in jedem Zeitpunkt des Ladeservices der Ladezustand des Fahrzeuges, die aktuelle Spannung am Anschlusspunkt und die maximale nutzbare Stromstärke des Fahrzeuges des jeweilgen Teilnehmers bekannt. Über ein Broadcastsystem wird innerhalb eines Anschlussbereiches von jedem Teilnehmer, welcher aktuell einen Ladeservice durchführt, die Information das ein solcher Prozess stattfindet verteilt. Über das selbe Broadcastsystem wird von den Transformatoren des Anschlussbereiches die aktuelle Menge an Scheinleistung, welche in den Anschlussbereich abgegeben wird verteilt. Durch Sammlung der Meldungen von Fahrzeugen, welche gerade einen Ladeservice durchführen, lässt sich die Anzahl der aktuell stattfindenden Ladeservices im Anschlussbereich ermitteln. Der Anschlussbereich in dem diese Daten verbreitet werden umfasst jeweils ein einzelnes Niederspannungsnetz.  Es wird in dieser Arbeit im folgenden davon ausgegangen, das das verwendete Broadcastsystem keinen nennenswerten Delay aufweist und eine hohe Verfügbarkeit hat. Somit wird davon ausgegangen das die Daten immer übertragen werden und so immer verwendet werden können.
+Während eines Ladeservices kann für die Beurteilung der aktuellen Situation auf verschiedene Daten zugegriffen werden. Es ist die Ankunftszeit, also der Beginn des Ladeservices, bekannt, ebenso wie die Abfahrtszeit, welche das Ende des Ladeservices markiert. Neben der Anfangs- und Endzeit, ist auch der aktuelle Zeitpunkt bekannt. Die aktuelle Zeit erhöht sich periodisch um immer den selben Wert und kann so in diskrete Zeiteinheiten eingeteilt werden. Des weiteren ist in jedem Zeitpunkt des Ladeservices der Ladezustand des Fahrzeuges, die aktuelle Spannung am Anschlusspunkt und die maximale nutzbare Stromstärke des Fahrzeuges des jeweiligen Teilnehmers bekannt. Über ein Broadcastsystem wird innerhalb eines Anschlussbereiches von jedem Teilnehmer, welcher aktuell einen Ladeservice durchführt, die Information das ein solcher Prozess stattfindet verteilt. Über das selbe Broadcastsystem wird von den Transformatoren des Anschlussbereiches die aktuelle Menge an Scheinleistung, welche in den Anschlussbereich abgegeben wird verteilt. Durch Sammlung der Meldungen von Fahrzeugen, welche gerade einen Ladeservice durchführen, lässt sich die Anzahl der aktuell stattfindenden Ladeservices im Anschlussbereich ermitteln. Der Anschlussbereich in dem diese Daten verbreitet werden umfasst jeweils ein einzelnes Niederspannungsnetz.  Es wird in dieser Arbeit im folgenden davon ausgegangen, das das verwendete Broadcastsystem keinen nennenswerten Delay aufweist und eine hohe Verfügbarkeit hat. Somit wird davon ausgegangen das die Daten immer übertragen werden und so immer verwendet werden können.
 
 \section{Spannungsregler nach VDE 4100}
 \label{capBody:VDE}
@@ -24,30 +24,23 @@ Die erste Methodik dient als Grundlinie für den Vergleich der später folgenden
 \end{figure}
 
 Der Graph in Abbildung \ref{Abb_VDEController} zeigt die mögliche Ladeleistung bei dem prozentualen Anteil der Normspannung. Auf der Y-Achse ist die mögliche Ladeleistung angetragen, wobei die eins für die höchstmögliche Leistung steht und null dafür, dass für keine Leistung abrufbar ist. An der X-Achse werden die aktuell anliegenden Prozent der Normspannung angetragen. An dem Graphen ist ersichtlich, dass bei mehr als 93\% der Normspannung die ganze Ladeleistung zur Verfügung steht. Es ist weiterhin erkennbar, wie sich die mögliche Ladeleistung im Bereich von 93\% bis 88\% der Normspannung verhält. Ebenso, wie das keine Ladeleistung bei einem Wert von weniger als 88\% der Normspannung mehr möglich ist. \\
-Die Ladeleistung wird berechnet durch die Formel
+Die Ladeleistung P\textsubscript{L} wird berechnet mithilfe der aktuellen Spannung U\textsubscript{A} und der aktuell maximal nutzbaren Stromstärke I\textsubscript{F} des Fahrzeuges durch die Formel
 \begin{align}
-	Ladeleistung = Aktuelle\ Spannung \cdot maximal \label{Main_formula1}\\
-	nutzbare\ Stromst\ddot{a}rke\ des\ Fahrzeuges \nonumber
+	P\textsubscript{L} = U\textsubscript{A} \cdot I\textsubscript{F} \label{Main_formula1}
 \end{align}
-Bei der Formel \ref{Main_formula1} wird von einer Spannung von über 93\% der Normspannung ausgegangen, da die berechnete Ladeleistung nicht verändert wird. Im Bereich von 93\% bis 88\% der Normspannung ist eine solche Änderung aber nötig. Der Faktor F, mit dem der verbliebene Anteil der möglichen Ladeleistung bestimmt wird, wird mit der Formel \\
-\begin{align}
-	F = 20 \cdot \frac{aktuelle Spannung}{Normspannung} - 17.6
-	\label{Main_formula2}
-\end{align}
-Berechnet. Der Wertebereich der Formel ist bei null bzw. Eins abgeschlossen. Bei zu niedrigen Spannungswerten, weniger als 88\% der Normspannung, wird der Faktor ohne Berechnung der Formel mit null angegeben. Ergebnisse größer als eins werden auf eins reduziert, da alle Werte größer als eins in einer höheren Ladeleistung als überhaupt möglich resultieren würden. \\
+Bei der Formel \ref{Main_formula1} wird von einer Spannung von über 93\% der Normspannung ausgegangen, da die berechnete Ladeleistung nicht verändert wird. Im Bereich von unter 93\% der Normspannung ist eine solche Änderung aber nötig. Der Faktor F, mit dem der verbliebene Anteil der möglichen Ladeleistung bestimmt wird, wird wie folgt bestimmt \\
 \begin{center}
-	$ F = \begin{cases*}
-	1 &  $>$ 93\% Normspannung \\
-	0 &  $<$88\% Normspannung \\
-	{[}0,1{]} & sonst
-	\end{cases*}$
+	$ F = \begin{cases}
+	1 &  \text{$>$ 93\% Normspannung} \\
+	0 &  \text{$<$ 88\% Normspannung} \\
+	20 \cdot \frac{U\textsubscript{A}}{U\textsubscript{N}} - 17.6 & \text{$>$ 88\%, $<$ 93\% Normspannung}
+	\end{cases}
+	$
 \end{center}
-
-
- Wird nun der Faktor in Formel \ref{Main_formula1} berücksichtigt, ergibt sich folgende Formel für die mögliche Ladeleistung
+Der Wertebereich der Formel ist bei null bzw. Eins abgeschlossen. Bei zu niedrigen Spannungswerten, weniger als 88\% der Normspannung, wird der Faktor ohne Berechnung der Formel mit null angegeben. Ergebnisse größer als eins werden auf eins reduziert, da alle Werte größer als eins in einer höheren Ladeleistung als überhaupt möglich resultieren würden. \\
+Wird nun der Faktor F in Formel \ref{Main_formula1} berücksichtigt, ergibt sich folgende Formel für die mögliche Ladeleistung\\
 \begin{align}
-	Ladeleistung = Aktuelle\ Spannung \cdot maximal\ \label{Main_formula3}\\
-	nutzbare\ Stromst\ddot{a}rke des\ Fahrzeuges \cdot Faktor \nonumber
+	P\textsubscript{L} = U\textsubscript{A} \cdot I\textsubscript{F} \cdot F \label{Main_formula3}
 \end{align}
 Bevor die mithilfe des VDE-AR-N 4100 Spannungsregler bestimmte mögliche Ladeleistung tatsächlich bezogen wird, wird bei dieser Methodik der Wert zuerst gefiltert. Diese Filterung erfolgt mit Hilfe eine First-Order Lag Filters. Bei einem First-Order Lag Filter wird eine Änderung zwischen dem aktuellen und einem neu berechneten Wert nicht komplett vollzogen, sondern nur teilweise. Ein solcher Filter dient der Dämpfung von oszillierenden Signalen hin zu einem homogenerem Verlauf . In der hier verwendeten Form werden nur 63,2\% der eigentlichen Änderung vorgenommen. So steigen Werte nur um 63,2\% der eigentlichen Steigerung, ebenso fallen Werte nur um 63,2\% der Änderung. Der Wert von 63,2\% wurde gewählt um in nur wenigen Schritten eine möglichst nahe Annäherung an den eigentlich Wert zu erreichen.
 \begin{figure}[htb]
@@ -67,7 +60,7 @@ Bei den nächsten vorgestellten Methoden wurden Bestandteile des Slotted Aloha P
 	\label{Abb_sharedmedium}
 \end{figure}
 In der Abbildung \ref{Abb_sharedmedium} ist in der oberen Hälfte ein möglicher Aufbau eines Netzes zu sehen, in dem man das Aloha Netzwerkprotokoll, sowohl in der herkömmlichen aber auch in der slotted Variante, verwenden könnte. Die fünf, größeren Kästchen stellen die Teilnehmer dar, die beiden kleineren markieren die Grenzen des Netzes. Die Linien stehen für das eigentliche geteilte Medium. Im unteren Teil des Bildes ist ein möglicher Aufbau eines Niederspannungsnetzes mit einem Transformator und fünf Teilnehmer dargestellt. Das dargestellte Niederspannungsnetz verfügt über nur einen Strahl. Der Transformator wird durch das Kästchen dargestellt, zwei ineinander verschobene Kreise stellen jeweils einen Teilnehmer dar. Die ersichtlichen Ähnlichkeiten der physischen Aufbauten lässt erneut den Schluss zu das sich das geteilte Medium im Fall des Aloha Netzwerkprotokolls und im fall des Stromnetzes vergleichen lässt.\\
-Im Aloha Netzwerkprotokoll werden Informationen mithilfe von Frames transportiert. Im Stromnetz werden elektrische Teilchen über elektrische Leistung transportiert. Ein Frame hat allerdings eine zuvor festgelegte Größe, welche nicht unter- oder überschritten werden darf. Leistung kann über einen beliebigen Zeitraum in jeder technisch machbaren Höhe bezogen werden. Teilt man die Zeit allerdings in diskrete Abschnitte ein, so ergibt sich eine maximale Menge an Leistung, welche in diesem Zeitraum bezogen werden kann. Sollte kein ganzer Zeitslot benötigt werden, gibt es jedoch auch eine Lösung. Im Falle des Aloha Netzwerkprotokolls gibt es die Möglichkeit eigentlich nicht vollständig ausgenutzte Frames mit Fülldaten auf das nötige Maß zu bringen. Im Stromnetz ist ein solches Vorgehen nicht nötig, wird ein Zeitslot nicht voll ausgenutzt, erfolgen keine weiteren Maßnahmen. Im Aloha Netzwerkprotokoll können Kollisionen auftreten. Diese treten immer dann auf, wenn mehr Teilnehmer als erlaubt das geteilte Medium gleichzeitig verwenden. Im Stromnetz gibt es ähnliche Situationen. Die erste wäre, wenn die Spannung bei einem Teilnehmer unter einen gewissen Schwellenwert fällt. Bei einem Spannungswert unterhalb dieses Schwellenwertes ist kein weiterer Leistungsbezug aus dem Netz möglich und der Ladevorgang muss an dieser Stelle beendet werden. Die zweite Möglichkeit, wie im Stromnetz eine Kollision auftreten kann, ist wenn der Transformator eine höhere last ans Netz abgibt als erlaubt. Tritt eine solche Kollision ein sind prinzipiell alle, zu diesem Zeitpunkt Leistung beziehenden, Teilnehmer betroffen. Auch eine solche Kollision führt zu einer Beendigung des aktuellen Ladevorgangs und zur Beendigung des Leistungsbezuges. Der in Kapitel .. vorgestellt Spannungsregler reagiert nur auf die erste Art der möglichen Kollisionen. Die weiteren Methodiken welche im Folgenden vorgestellt werden reagieren auf eine oder beide Arten der Kollisionen auf verschieden Art und Weisen.
+Im Aloha Netzwerkprotokoll werden Informationen mithilfe von Frames transportiert. Im Stromnetz werden elektrische Teilchen über elektrische Leistung transportiert. Ein Frame hat allerdings eine zuvor festgelegte Größe, welche nicht unter- oder überschritten werden darf. Leistung kann über einen beliebigen Zeitraum in jeder technisch machbaren Höhe bezogen werden. Teilt man die Zeit allerdings in diskrete Abschnitte ein, so ergibt sich eine maximale Menge an Leistung, welche in diesem Zeitraum bezogen werden kann. Sollte kein ganzer Zeitslot benötigt werden, gibt es jedoch auch eine Lösung. Im Falle des Aloha Netzwerkprotokolls gibt es die Möglichkeit eigentlich nicht vollständig ausgenutzte Frames mit Fülldaten auf das nötige Maß zu bringen. Im Stromnetz ist ein solches Vorgehen nicht nötig, wird ein Zeitslot nicht voll ausgenutzt, erfolgen keine weiteren Maßnahmen. Im Aloha Netzwerkprotokoll können Kollisionen auftreten. Diese treten immer dann auf, wenn mehr Teilnehmer als erlaubt das geteilte Medium gleichzeitig verwenden. Im Stromnetz gibt es ähnliche Situationen. Die erste wäre, wenn die Spannung bei einem Teilnehmer unter einen gewissen Schwellenwert fällt. Bei einem Spannungswert unterhalb dieses Schwellenwertes ist kein weiterer Leistungsbezug aus dem Netz möglich und der Ladevorgang muss an dieser Stelle beendet werden. Die zweite Möglichkeit, wie im Stromnetz eine Kollision auftreten kann, ist wenn der Transformator eine höhere last ans Netz abgibt als erlaubt. Tritt eine solche Kollision ein sind prinzipiell alle, zu diesem Zeitpunkt Leistung beziehenden, Teilnehmer betroffen. Auch eine solche Kollision führt zu einer Beendigung des aktuellen Ladevorgangs und zur Beendigung des Leistungsbezuges. Der in Kapitel \ref{capBody:VDE} vorgestellt Spannungsregler reagiert nur auf die erste Art der möglichen Kollisionen. Die weiteren Methodiken welche im Folgenden vorgestellt werden reagieren auf eine oder beide Arten der Kollisionen auf verschieden Art und Weisen.
 In Kapitel \ref{capBack:Aloha} wurden zwei verschiedene Varianten des Aloha Netzwerkprotokolls vorgestellt, eine herkömmliche und eine slotted Variante. Das Stromnetz gleicht von Der Arbeitsweise der Teilnehmer aus gesehen mehr der herkömmlichen Variante. Teilt man allerdings auch im Stromnetz die Zeit in diskrete Schritte ein und erlaubt Änderungen nur zu Beginn eines solchen Schrittes. So entsteht auch im Stromnetz eine Arbeitsweise, welche nun mehr dem Slotted Aloha entspricht. Da nun in dieser Arbeit die Zeit in diskrete, gleich lange Zeitabschnitte eingeteilt wird, wird im Stromnetz die Arbeitsweise des slotted Aloha Netzwerkprotokolls verwendet.
 
 \subsection{Wartezeit über Teilnehmerzahl}
@@ -144,23 +137,16 @@ Die Laststeuerung am Transformator soll dazu beitragen die Ausgangsleistung des 
 	\label{SATrafo:Graph}
 \end{figure}
 
-In der Abbildung \ref{SATrafo:Graph} zeigt die mögliche Ladeleistung bei dem prozentualen Anteil der maximalen Transformatorlast. Auf der Y-Achse ist die mögliche Ladeleistung angetragen, wobei die eins für die höchstmögliche Leistung steht und null dafür, dass für keine Leistung abrufbar ist. An der X-Achse werden die aktuell anliegenden Prozent der Normspannung angetragen. An dem Graphen ist ersichtlich wie sich eine ansteigende Transformatorlast auf die mögliche Ladeleistung auswirkt. Ebenso wird im Vergleich mit der Abbildung \ref{Abb_VDEController} ersichtlich, wie die Arbeitsweise der beiden Regler übereinstimmt. Der Faktor, welcher mit der Formel 
-\begin{align}
-	F = - \frac{10}{403333} \cdot aktuelle\ Transformatorlast + 5
-	\label{Trafo_formula1}
-\end{align}
-Berechnet wird, gibt an welcher Anteil der Ladeleistung bei der aktuellen Transformatorlast verfügbar ist. Ergebnisse größer als eins werden auf eins reduziert, da alle Werte größer als eins in einer höheren Ladeleistung als überhaupt möglich resultieren würden. \\
+In der Abbildung \ref{SATrafo:Graph} zeigt die mögliche Ladeleistung bei dem prozentualen Anteil der maximalen Transformatorlast. Auf der Y-Achse ist die mögliche Ladeleistung angetragen, wobei die eins für die höchstmögliche Leistung steht und null dafür, dass für keine Leistung abrufbar ist. An der X-Achse werden die aktuell anliegenden Prozent der Normspannung angetragen. An dem Graphen ist ersichtlich wie sich eine ansteigende Transformatorlast auf die mögliche Ladeleistung auswirkt. Ebenso wird im Vergleich mit der Abbildung \ref{Abb_VDEController} ersichtlich, wie die Arbeitsweise der beiden Regler übereinstimmt. Der Faktor gibt an welcher Anteil der Ladeleistung bei der aktuellen Transformatorlast verfügbar ist. Ergebnisse größer als eins werden auf eins reduziert, da alle Werte größer als eins in einer höheren Ladeleistung als überhaupt möglich resultieren würden. Der Wert des Faktors F\textsubscript{T} wird mit folgender Formel bestimmt \\
 \begin{center}
-	$ F = \begin{cases*}
-	1 &  $<$ 80\% maximaler Last \\
-	0 &  $>$100\% maximaler Last \\
-	{[}0,1{]} & sonst
-	\end{cases*}$
+	$ F = \begin{cases}
+	1 &  \text{$<$ 80\% maximaler Last} \\
+	0 &  \text{$>$100\% maximaler Last} \\
+	- \frac{10}{403333} \cdot L\textsubscript{T} + 5 & \text{$>$ 80\%, $<$ 100\% maximaler Last}
+	\end{cases}$
 \end{center}
 Der Wert der aktuellen Transformatorauslastung wird ähnlich zu der Anzahl der Teilnehmer über das Broadcastsystem verteilt. Liegt der Wert nicht vor, wird ein Wert nahe am Limit gewählt, um die last so niedrig wie möglich zu halten, aber dennoch noch eine Lastbezug zu lassen. Der Faktor der Transformatorlast wird ebenso wie der Faktor zur Spannung in der Formel \ref{Main_formula1} berücksichtigt, dadurch verändert sich dir Formel \ref{Main_formula3} wie folgt
 \begin{align}
-	Ladeleistung = Aktuelle\ Spannung \cdot maximal\ \label{Main_formula3}\\
-	nutzbare\ Stromst\ddot{a}rke des\ Fahrzeuges \nonumber \\
-	\cdot Spannungsfaktor \cdot Transformatorfaktor \nonumber
+	P\textsubscript{L} = U\textsubscript{A} \cdot I\textsubscript{F} \cdot F\textsubscript{S} \cdot F\textsubscript{T} \label{Main_formula4}
 \end{align}
 
