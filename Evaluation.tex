@@ -19,32 +19,54 @@ Es werden für die Simulationen auch einige Annahmen getroffen. Der Kapazität d
 \section{Simulationsergebnisse}
 Die Ergebnisse der Simulationen werden zunächst aufgeteilt auf die verwendeten Methodiken vorgestellt. Eingegangen wird auf die verursachte Trafolast, die Spannungen, aufgetretene und behandelte Kollisionen, sowie die Qualitätserfahrungen.
 \subsection{VDE alleine}
-In der Abbildung … ist die Transformatorlast bei Verwendung der in Kapitel 3.3 vorgestellten Methodik dargestellt.\\
+In der Abbildung \ref{Abb_VDEtauTrafoLast} ist die Transformatorlast bei Verwendung der in Kapitel 3.3 vorgestellten Methodik dargestellt.\\
 \begin{figure}[htb]
 \centering
-	\includegraphics[width=\textwidth]{img/VDE_tau/TrafoLast.png}
+	\includegraphics[scale=0.6]{img/VDE_tau/TrafoLast.png}
 	\caption{Schnittstellen zwischen den Teilen des Simulators}
 	\label{Abb_VDEtauTrafoLast}
 \end{figure}
+
 Dargestellt ist ein Zeitraum vom 17.11.2019 um 0:00 bis zum 23.11.2019 um 24:00. Dieser Zeitraum reicht von Sonntag bis Samstag, deckt also eine komplette Woche ab. Je höher die Kurve, desto höher ist die Last welche am Transformator anliegt. Die gestrichelte, untere vertikale Linie markiert die maximale Last, 60500 VA auf der Y-Achse, welche ohne Aktivität der Elektrofahrzeuge am Netz anliegt. Die gepunktete untere, vertikale Linie, bei 121000 VA, markiert die doppelte Last. Die gepunktete obere, vertikale Linie, bei 181500 VA, das dreifache dieser Last. Je mehr VA an Scheinleistung der Transformator ans Niederspannungsnetz abgeben muss, desto höheren Lasten ist der Transformator ausgesetzt. \\
 Über den Zeitraum der Simulation wurde die Grenze von 121000 VA, was das doppelt der vorherigen maximalen Last darstellt, bei 733 von 10080 Möglichkeiten überschritten. Die vorherige maximale Last von 60500VA wurde dabei sogar 2538 von 10080 Malen überschritten. Wenn die Last ansteigt, steigt sie schnell an, bis sie ihr Maximum erreicht und fällt dann wieder in etwa derselben Geschwindigkeit wie sie angestiegen ist. Die maximal gemessene Last beträgt etwa 475000 VA. Die im Mittel abgegeben Last beträgt etwa 45160 VA. Am Graphen sind die die Abende der Tage durch den Anstieg der Last erkennbar. Die Morgenstunden eines jeden Tages sind durch flache Stellen, welche eine niedrige Last bedeuten gekennzeichnet. \\
 \begin{figure}[htb]
 \centering
-	\includegraphics[width=\textwidth]{img/VDE_tau/Spannung10m.png}
+	\includegraphics[scale=0.6]{img/VDE_tau/Spannung10m2.png}
 	\caption{Schnittstellen zwischen den Teilen des Simulators}
 	\label{Abb_VDEtauSpannung10m}
 \end{figure}
-In Abbildung .. ist der selbe Zeitraum dargestellt wie in Abbildung .. . Dargestellt sind ist der jeweilige Minimalwert der Spannung. Die Spannung wird aber nicht in jeder Minute aktualisiert, sondern Daten werden in 10 Minuten Intervallen gesammelt und deren Mittelwert wird abgebildet. 10 Minuten Mittelwerte, wurden gewählt um die Spannungsqualität gemäß DIN EN 50160 zu bewerten. Die Norm gibt vor das über einen Zeitraum von einer Woche zu mindesten 95\% der Zeit ein Spannungswert von mehr als 207 V, dies entspricht 95\% der Normspannung von 230V, gemessen werden muss. Der Grenzwert von 207V ist durch die obere gepunktete Linie markiert. Der Mittelwert wird nicht über das Niederspannungsnetz hinweg erfasst, sondern an jedem Anschlusspunkt gemessen. In der dargestellten Simulation wurde der Grenzwert von 207V maximal 21 Mal unterschritten, 50 Unterschreitungen bei 1008 Messwerten wären zulässig. Die verblieben 5\% der Woche darf die Spannung sogar um mehr als 10\% absinken. In dieser Zeit sind Unterschreitungen der Normspannung um bis zu 15\% gestattet. Dieser Grenzwert darf allerdings nicht weiter unterschritten werden. Die untere gepunktet Linie markiert ein Spannungslevel von 195,5 V, was 85\% der Normspannung entspricht. Die maximale Anzahl an Unterschreitungen von 195,5 V beträgt 2. Somit wurde die Normspannung um mehr als 15\% unterschritten und die Norm DIN EN 50160 ist damit nicht erfüllt. Der niedrigste gemessene Mittelwert im gesamten betrachteten Netz liegt bei 192,86 V. Der mittlere gemessene Wert liegt bei 234,06 V.\\
+
+In Abbildung \ref{Abb_VDEtauSpannung10m} ist der selbe Zeitraum dargestellt wie in Abbildung \ref{Abb_VDEtauTrafoLast}. Dargestellt sind ist der jeweilige Minimalwert der Spannung. Die Spannung wird aber nicht in jeder Minute aktualisiert, sondern Daten werden in 10 Minuten Intervallen gesammelt und deren Mittelwert wird abgebildet. 10 Minuten Mittelwerte, wurden gewählt um die Spannungsqualität gemäß DIN EN 50160 zu bewerten. Die Norm gibt vor das über einen Zeitraum von einer Woche zu mindesten 95\% der Zeit ein Spannungswert von mehr als 207 V, dies entspricht 95\% der Normspannung von 230 V, gemessen werden muss. Der Grenzwert von 207 V ist durch die obere gepunktete Linie markiert. Der Mittelwert wird nicht über das Niederspannungsnetz hinweg erfasst, sondern an jedem Anschlusspunkt gemessen. In der dargestellten Simulation wurde der Grenzwert von 207V maximal 21 Mal unterschritten, 50 Unterschreitungen bei 1008 Messwerten wären zulässig. Die verblieben 5\% der Woche darf die Spannung sogar um mehr als 10\% absinken. In dieser Zeit sind Unterschreitungen der Normspannung um bis zu 15\% gestattet. Dieser Grenzwert darf allerdings nicht weiter unterschritten werden. Die untere gepunktet Linie markiert ein Spannungslevel von 195,5 V, was 85\% der Normspannung entspricht. Die maximale Anzahl an Unterschreitungen von 195,5 V beträgt 2. Somit wurde die Normspannung um mehr als 15\% unterschritten und die Norm DIN EN 50160 ist damit nicht erfüllt. Der niedrigste gemessene Mittelwert im gesamten betrachteten Netz liegt bei 192,86 V. Der mittlere gemessene Wert liegt bei 234,06 V.\\
 Der niedrigste einzelne Messwert der Spannung liegt bei 152,23 V. Der mittler Spannungswert über das gesamte Niederspannungsnetz liegt bei 234,06 V mit 8,36 V Standardabweichung. 
-Die hier vorgesellte Methodik reagiert auf keine Art von Kollision, dennoch wurde die Anzahl von Situationen erfasst, in denen Kollisionen aufgetreten wären. Hierbei gibt es zu beachten, das der Simulationszeitraum 10080 Schritte umfasst, welche von jedem der 110 betrachteten Fahrzeuge durchlaufen werden. Dies bedeutet es werden 1108800 Situationen betrachtet. In 1535 von wäre ein Spannungskollision aufgetreten und in 5615 wäre eine Transformatorkollision aufgetreten. In insgesamt 5615 Situationen trat eine Art von Kollisionen auf. Diese Arten der Kollisionen beinhalten eine reine Spannungskollision, eine reine Transformatorkollision, sowie eine Spannungskollision und Transformatorkollision, welche zeitgleich auftreten.\\
+Die hier vorgestellte Methodik reagiert auf keine Art von Kollision, dennoch wurde die Anzahl von Situationen erfasst, in denen Kollisionen aufgetreten wären. Hierbei gibt es zu beachten, das der Simulationszeitraum 10080 Schritte umfasst, welche von jedem der 110 betrachteten Fahrzeuge durchlaufen werden. Dies bedeutet es werden 1108800 Situationen betrachtet. In 1535 von wäre ein Spannungskollision aufgetreten und in 5615 wäre eine Transformatorkollision aufgetreten. In insgesamt 5615 Situationen trat eine Art von Kollisionen auf. Diese Arten der Kollisionen beinhalten eine reine Spannungskollision, eine reine Transformatorkollision, sowie eine Spannungskollision und Transformatorkollision, welche zeitgleich auftreten.\\
 Innerhalb des Simulation Zeitraumes werden insgesamt 557 Ladeservies gestartet. Von diesen wurden alle erfolgreich abgeschlossen. Dies bedeutet das ein jedes Fahrzeug beim Verlassen der Ladestation einen Ladezustand von 100\% aufwies. Beim Start eines Ladeservices lag der durchschnittliche Ladestand bei etwa 85\%, schon nach etwa 40\% des Ladeservices liegt der durchschnittliche Ladestand bei fast 100\% mit einer Standardabweichung von lediglich 0,8\%. \\
-Minipage mit soc graphen\\
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}[t]{0.45\linewidth}
+		\centering
+        \includegraphics[width=0.8\linewidth]{img/VDE_tau/tau_VDE_2_soc_mean.png}
+        \caption{Durchschnittlicher Ladezustand eines Elektrofahrzeuges}
+        \label{ABB_VDEtauSocMEAN}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\linewidth}
+		\centering
+        \includegraphics[width=0.8\linewidth]{img/VDE_tau/tau_VDE_2_soc_std.png}
+        \caption{Durschschnittliche Standardabweichung des Ladezustandes}
+        \label{ABB_VDEtauSocSTD}
+	\end{minipage}
+\end{figure}
+
 Die Qualitätserfahrung bei einem Ladeprozess steigt mit zunehmenden Ladestand des Fahrzeuges, bei einer schnellen Erhöhung des Ladestandes steigt auch der Wert der Qualitätserfahrung entsprechend schnell an.\\
-qoegrap\\
-
-
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.4]{img/VDE_tau/tau_VDE_2_qoe.png}
+	\caption{Durchschnittlicher Qualitätserfahrung eines Elektrofahrzeuges}
+	\label{Abb_VDEtauTrafoLast}
+\end{figure}
 
 \subsection{SA-Part alleine}
+Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde.
 \subsection{SA-waitingTime alleine}
 \subsection{SA-Part-trafo alleine}
 \subsection{SA-waitingTime-trafo alleine}
