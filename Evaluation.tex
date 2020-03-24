@@ -19,47 +19,48 @@ Es werden für die Simulationen auch einige Annahmen getroffen. Der Kapazität d
 \section{Simulationsergebnisse}
 Die Ergebnisse der Simulationen werden zunächst aufgeteilt auf die verwendeten Methodiken vorgestellt. Eingegangen wird auf die verursachte Trafolast, die Spannungen, aufgetretene und behandelte Kollisionen, sowie die Qualitätserfahrungen und die Fairness zwischen den Ladevorgängen. 
 \subsection{VDE alleine}
-Abbildung \ref{Abb_VDEtauTrafoLast} zeigt die Transformatorlast über den Zeitraum von einer Woche unter Verwendung eines dezentralen VDE Spannungs-Controllers, wie er in Kapitel \ref{capBody:VDE} eingeführt wurde. Ebenso ist die Grundlast, welche unabhängig der Elektrofahrzeuge auftritt.
+Die Verwendung des VDE-Spannungscontrollers (\ref{capBody:VDE}) wurde über einen Zeitraum von einer Woche hinweg simuliert, dargestellt werden die Ergebnisse eines einzelnen Werktages. Ein Werktag wurde gewählt, da die Mehrheit der simulierten Tage ein Werktag ist. Dargestellt wird die Transformatorlast, die minimalen Werte der Spannung sowie die Anzahl der Teilnehmer, welche Leistung aus dem Netz beziehen. 
 \begin{figure}[htb]
 \centering
-	\includegraphics[scale=0.7]{img/VDE_tau/TrafoLast6.png}
+	\includegraphics[scale=0.7]{img/VDE_tau/TrafoLast7.png}
 	\caption{Trafolast bei Verwendung des VDE Spannungs-Controllers}
 	\label{Abb_VDEtauTrafoLast}
 \end{figure}
 
-Die gestrichelte, untere vertikale Linie markiert die maximale Last, 60,5 kVA auf der Y-Achse, welche ohne Aktivität der Elektrofahrzeuge am Netz anliegt. Die beiden gepunkteten Linien stellen den Bereich von doppelter bis dreifacher Nominallast dar. Je mehr VA an Scheinleistung der Transformator ans Niederspannungsnetz abgeben muss, desto höheren Lasten ist der Transformator ausgesetzt. Die gepunktete kurve stellt die Höhe der Grundlast dar. Die Grundlast deckt jeglichen Verbrauch von elektrischer Energie außerhalb des Ladens von Elektrofahrzeugen ab. Der VDE Controller gibt an, wie viel Energie insgesamt durch das Laden von Elektrofahrzeugen und die Grundlast verbraucht wird. \\
-Die Abbildung stellt die Werte des dritten von sieben Tagen der Simulation dar. Die bereits erhöhte Last zu Beginn des Zeitraums lässt darauf schließen, dass Fahrzeuge welche bereits am Tag zuvor angekommen sind noch immer laden. Im Zeitraum von 8:00 bis 10:00 steigt sowohl die Grundlast aber auch die Last an sich an, Die Nähe der beiden Kurven lässt allerdings auf eine geringe Anzahl von Ladevorgängen schließen. Von etwa 12:00 bis 14:00 und 14:00 bis 14:30 sind an der Leistungskurve aufgrund der Erhöhung zur Grundlast erstmals Ladevorgänge deutlich erkennbar. Von 15:00 bis 23:00 ist durchweg ein hoher Mehrverbrauch von Energie sichtbar. Die Leistungskurve liegt hier deutlich über der Grundlast, bei einer stabilen Grundlast von etwa 30 bis 40 kVA wird der Verbrauch durch das Laden auf teilweise etwa 450 kVA mehr als verzehnfacht. In dem Zeitabschnitt liegen die Messungen fast ausschließlich über der maximal gemessen Grundlast. Am Aussehen des Graphen in diesem Zeitraum, lässt sich eine starke Oszillation der erhaltenen Werte erkennen. Da ein solches Verhalten nur in Situationen mit einer hohen Last auftritt, bedeutet das der verwendete Controller mit eben solchen Situationen nicht umgehen kann. Da solch hohe Lasten durch das Laden von Elektrofahrzeugen jedoch häufiger vorkommen und der Controller nicht in der Lage ist das Leistungsniveau dauerhaft zu senken, stellt dies seine Verwendbarkeit an sich in Frage. \\
-Über dem gesamten  Zeitraum der Simulation wurde die Grenze von 121 kVA in 7,3 \% der betrachteten Zeit überschritten. Die Überschreitungen traten verteilt auf. Die vorherige maximale Last von 60,5 kVA wurde dabei sogar 25,2 \% der Zeit überschritten. Die maximal gemessene Last beträgt etwa 475 kVA. Solche Spitzenwerte können kaum vermieden werden, wenn mehrere Fahrzeuge gleichzeitig zu Laden beginnen. Da ein einzelnes Fahrzeug nur dezentral entscheiden kann. Die im Mittel abgegeben Last beträgt etwa 45,1 kVA. Wenn nur die Grundlast betrachtet wird, beträgt die mittlere abgegeben Leistung etwa 20,5 KVA, somit nimmt sie etwa 45 \% der mittleren Trafolast in Anspruch. Am Graphen ist erkennbar, dass ein Anstieg der Grundlast meist auch einen Anstieg der eigentlichen Last nach sich zieht. Daraus lässt sich folgern, dass bei Zeitpunkten mit hoher Grundlast auch vermehrt Elektrofahrzeuge zu laden beginnen bzw. ladebereit sind. Die Passagiere der angekommenen Elektrofahrzeuge, benötigen neben der Energie zum Laden der Elektrofahrzeuge auch Energie für den persönlichen Gebrauch, somit steigen die Grundlast zusätzlich zur neu hinzugekommen Last durch das Laden an. 
-
+In der Abbildung \ref{Abb_VDEtauTrafoLast} ist die vom Transformator ans Niederspannungsnetz abgegeben Scheinleistung in kVA über den Verlauf eines Tages abgebildet. Der Regelbereich des Controllers ist im Falle der Transformatorlast nicht relevant, der VDE Controller lediglich die Spannung berücksichtigt.
 \begin{figure}[htb]
 \centering
-	\includegraphics[scale=0.7]{img/VDE_tau/Spannung10m5.png}
+	\includegraphics[scale=0.7]{img/VDE_tau/Spannung10m6.png}
 	\caption{Spannungsverlauf mit 10 Minuten Mittelwerten bei Verwendung des VDE Spannungs-Controllers}
 	\label{Abb_VDEtauSpannung10m}
 \end{figure}
 
-In Abbildung \ref{Abb_VDEtauSpannung10m} ist der selbe Experiment dargestellt wie in Abbildung \ref{Abb_VDEtauTrafoLast}. Dargestellt sind ist der jeweilige Minimalwert der Spannung über alle Anschlusspunkte. Die einzelnen Messwerte werden für jeden Anschlusspunkt individuell erfasst. Die Spannung wird aber nicht in jeder Minute aktualisiert, sondern Daten werden in 10 Minuten Intervallen gesammelt und deren Mittelwert wird abgebildet. 10 Minuten Mittelwerte, wurden gewählt, um die Spannungsqualität gemäß DIN EN 50160 zu bewerten. Die Norm gibt vor das über einen Zeitraum von einer Woche zu mindesten 95 \% der Zeit ein Spannungswert von mehr als 95 \% der Normspannung von 230V, gemessen werden muss. Der Grenzwert von 95 \% der Normspannung ist durch die mittlere gestrichelte Linie markiert. Die verblieben 5 \% der Zeit darf die Spannung sogar um bis zu 15 \% absinken. Dieser Grenzwert darf allerdings nicht weiter unterschritten werden. Die untere gepunktete Linie markiert 85 \% der Normspannung. Zur Einordnung zeigt die oberste, vertikale gestrichelte Linie die Normspannung von 230 V an. Der gepunktete Graph zeigt den verlauf der minimalen Spannung, wenn nur die Grundlast bezogen wird. Die durchgezogene Line zeigt den minimalen Spannungsverlauf wenn neben dem bezug der Grundlast auch Elektrofahrzeuge geladen werden.\\
-Das Absinken der Spannung korreliert mit dem Anstieg der bezogen Leistung. In dem Zeitraum in dem vermehrt Leistung bezogen wird, siehe Abbildung \ref{Abb_VDEtauTrafoLast}, sinkt auch die Spannung ab. Da in dieser Spannung die Minimalwerte über das gesamte Niederspannungsnetz hinweg betrachtet werden, tritt hier keine Oszillation auf. Im Zeitraum von etwa 18:00 bis 20:00 ist eine Unterschreitung der 207 V Markierung erkennbar, somit liegt der Minimal Wert in etwa 7\% der Zeit unter 207 V Grenze. Diese Unterschreitung ist allerding nicht aussagekräftig, da die Norm DIN EN 50160 einen Zeitraum von einer Woche und nicht von einem Tag betrachtet. In demselben Zeitraum ist allerdings auch eine Unterschreitung der 195,5 V Markierung erkennbar. Eine solche Unterschreitung ist in der Norm generell nicht vorgesehen, somit ist Norm nicht erfüllt.\\
-Der niedrigste gemessene Mittelwert im gesamten betrachteten Netz liegt bei 192,86 V, dies entspricht einer Unterschreitung von 230 V um 16,8 \%. Dies verstößt gegen den zweiten Teil der Norm. Der erste Teil wird aber erfüllt, die maximale Anzahl an Unterschreitungen der 107 V Grenze beträgt 21, was etwa 2,1\% der Zeiten entspricht. Der mittlere gemessene Wert liegt bei 234,06 V, dies liegt sogar über der Normspannung. Dies lässt darauf schließen, dass die Einspeisespannung des Transformators mehr als 230 V beträgt.
-Neben den 10 Minuten Mittelwerten, werden auch die Minutengenauen Werte der Spannung erfasst. Der niedrigste einzelne Messwert der Spannung liegt bei 152,23 V.  Dieser Wert liegt nochmal deutlich unter dem Minimum der 10 Minuten Mittelwerte. Der mittlere Spannungswert über das gesamte Niederspannungsnetz liegt bei 234,06 V lediglich 3,5\% (8,36 \%??) Standardabweichung. Die mittleren Werte der einzelnen Spannungsmessungen und der 10 Minuten Werte stimmen also überein. \\
+In der Abbildung \ref{Abb_VDEtauSpannung10m} ist der Verlauf der minimalen Spannung über das gesamte Niederspannungsnetz hinweg aufgezeichnet. Bei den dargestellten Werten handelt es sich nicht um minutengenaue Messwerte, sondern um die Mittelwerte von 10 Minuten Intervallen. Diese Intervalle wurden gewählt um die Erfüllung der Norm DIN EN 50160 zu bestimmen. Die Norm befasst sich allerdings mit der Spannung an einzelnen Anschlusspunkten, dargestellt werden allerdings Werte aus dem gesamten Niederspannungsnetz, somit lässt sich anhand des Graphen nur bestimmen, ob die Norm von allen Anschlusspunkten eingehalten wurde. Bei einem sichtbaren Verstoß gegen die Norm, lässt sich nur das Vorhandensein eines einzelnen Verstoßes ableiten, da nur minimal Werte dargestellt werden. Ob zeitgleich noch andere Anschlusspunkte gegen die Norm verstoßen haben ist anhand des Graphens nicht feststellbar.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/VDE_tau/Teilnehmer.png}
+	\caption{Teilnehmeranzahl bei Verwendung des VDE Spannungs-Controllers}
+	\label{Abb_VDEtauTeilnehmer}
+\end{figure}
+
+In der Abbildung \ref{Abb_VDEtauTeilnehmer} ist die Anzahl an Controllern abgebildet, welche Leistung für das Laden von Elektrofahrzeugen aus dem Netz beziehen. Leistungsbezieher, welche zwar Leistung beziehen, mit dieser aber kein Elektrofahrzeug laden, werden nicht dargestellt. 
+Bis etwa 16:00 steigt die bezogene Leistung am Transformator mehrmals über die Grundlast hinaus an, diese Anstiege decken sich mit einer Zunahme an Teilnehmer und sich auch an der fallenden Spannungskurve erkennbar. Die Belastungen bis zu diesem Zeitpunkt sind allerdings nicht hoch genug, dass die Spannung den Regelbereich des Spannungscontrollers erreicht. Um etwa 16:00 fällt die Spannung bis zum Beginn des Regelbereiches ab, steigt dann aber wieder an, was sich auf eine sinkende Teilnehmeranzahl zurückführen lässt. Nach 16:00 steigt die Anzahl der Teilnehmer innerhalb zweier Stunden stark an, von etwa 4 auf bis zu 18 Teilnehmer. Dieser Anstieg an Teilnehmern führt auch zu einer gesteigerten Menge an bezogener Ladeleistung. In derselben Zeit fällt auch die Spannung ab, zunächst nur bis in den Regelbereich hinein. Ab etwa 18:00 liegt die minimal gemessene Spannung unterhalb des Regelbereiches des Spannungscontrollers, etwa zwei Stunden lang werden Spannungen unterhalb des Regelbereiches gemessen. Erst als die Teilnehmerzahl ab 20:00 sinkt und damit auch die Transformatorlast wieder zurückgeht, steigt die Spannung wieder an. Der Abfall der Spannung unterhalb des Regelbereiches zeigt an, das der Spannungscontroller nicht mehr ordentlich arbeiten und nicht in der Lage ist die Spannung auf einem ausreichenden Niveau zu halten. Der Wert der Spannung der 10 Minuten Intervalle fällt auf bis zu 184,60 V ab, da dies weniger als 15 \% der Normspannung entspricht, wird die Norm DIN EN 50160 nicht erfüllt. An der Kurve der Transformatorlast lässt sich erkennen, dass der Spannungscontroller zwar arbeitet, die vorgenommen Regelungen allerdings in einer stark schwankenden Transformatorlast resultieren. \\
 
 Die hier vorgestellte Methodik reagiert auf keine Art von Kollision, dennoch wurde die Anzahl von Situationen erfasst, in denen Kollisionen aufgetreten wären. Hierbei gibt es zu beachten, dass der Simulationszeitraum 10080 Schritte umfasst, welche von jedem der 110 betrachteten Fahrzeuge durchlaufen werden. Dies bedeutet es werden 1108800 Situationen betrachtet. In 0,13 \% davon ist eine Spannungskollision aufgetreten und in 0,15 \% davon ist eine Transformatorkollision aufgetreten. In insgesamt 0,15 \% der Fälle, also 5615 Situationen, trat eine Art von Kollisionen auf. Diese Arten der Kollisionen beinhalten eine reine Spannungskollision, eine reine Transformatorkollision, sowie eine Spannungskollision und Transformatorkollision, welche zeitgleich auftreten. \\
-Innerhalb des Simulation Zeitraumes werden insgesamt 557 Ladeservices gestartet, von denen alle erfolgreich abgeschlossen wurden. Dies bedeutet, dass ein jedes Fahrzeug beim Verlassen der Ladestation einen Ladezustand von 100 \% aufwies. Beim Start eines Ladeservices lag der durchschnittliche Ladestand bei etwa 85 \%, schon nach etwa 40 \% des Ladeservices liegt der durchschnittliche Ladestand bei fast 100 \% mit einer Standardabweichung von lediglich 0,8 \%. 
-\begin{figure}[htb]
-	\centering
-	\begin{minipage}[t]{0.49\linewidth}
-		\centering
-        \includegraphics[width=\linewidth]{img/VDE_tau/tau_VDE_2_soc_mean.png}
-        \caption{Durchschnittlicher Ladezustand eines Elektrofahrzeuges}
+
+Innerhalb des Simulation Zeitraumes werden insgesamt 557 Ladeservices gestartet, von denen alle erfolgreich abgeschlossen wurden. Dies bedeutet, dass ein jedes Fahrzeug beim Verlassen der Ladestation einen Ladezustand von 100 \% aufwies. Beim Start eines Ladeservices lag der durchschnittliche Ladestand bei etwa 85 \%, schon nach etwa 40 \% des Ladeservices liegt der durchschnittliche Ladestand bei fast 100 \% mit einer Standardabweichung von lediglich 0,8 \%. Der schnelle Anstieg des durchschnittlichen Ladestandes zeigt das die Fahrzeuge sehr früh und gleichmäßig mit hohen Mengen an Energie versorgt werden. \\
+\begin{figure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/VDE_tau/tau_VDE_2_soc_mean.png}
+        \subcaption{Durchschnittlicher Ladezustand eines Elektrofahrzeuges}
         \label{ABB_VDEtauSocMEAN}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.49\linewidth}
-		\centering
-        \includegraphics[width=\linewidth]{img/VDE_tau/tau_VDE_2_soc_std.png}
-        \caption{Durschschnittliche Standardabweichung des Ladezustandes}
+	\end{subfigure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/VDE_tau/tau_VDE_2_soc_std.png}
+        \subcaption{Durschschnittliche Standardabweichung des Ladezustandes}
         \label{ABB_VDEtauSocSTD}
-	\end{minipage}
+	\end{subfigure}
+	\caption{ganz unten}
 \end{figure}
 
 Da alle begonnen Ladeservices erfolgreich beendet wurden, ist die Qualität der Ladeservices maximal. Die Fairness beim Erreichen dieser Qualität ist in Abbildung \ref{Abb_VDEtauFairness} aufgezeichnet. \\
@@ -70,20 +71,135 @@ Da alle begonnen Ladeservices erfolgreich beendet wurden, ist die Qualität der 
 	\label{Abb_VDEtauFairness}
 \end{figure}
 
-Die Fairness wird mithilfe der Hoßfeld Methode \cite{Hosfeld2018} berechnet. Diese Methode bezieht die Standardabweichung vom Ergebnis als auch die maximal und minimal möglichen Werte des Ergebnisses mit ein. Der Wert der Fairness wird mit folgender Formel F($\sigma$) berechnet.
-\begin{align}
-	F(\sigma) = 1-\frac{2*\sigma}{100}
-\end{align}
+Da die Fairness abhängig von der Standardabweichung des Ladezustandes ist, steigt die Fairness wie die Standardabweichung fällt. Da, je geringer die Standardabweichung ist, desto höher ist die Fairness. Die Fahrzeuge werden bereits in den Anfangszeiten der Ladeservices mit der nötigen Energie versorgt um einen Ladestand von 100 \% zu erreichen. Da diese Erhöhung des Ladestandes bei allen Teilnehmern so schnell von statten geht, sinkt auch die Standardabweichung schnell ab. Dieses Absinken zeigt die zunehmende Ähnlichkeit der ladezustande und so auch die Fairness beim Laden.
 
-$\sigma$ steht für die Standardabweichung des Ladezustandes beim Verlassen der Ladestation. Die 100 im Nenner des Bruches kommt zustande durch die Subtraktion des niedrigsten möglichen Wertes vom höchst möglichen Wert, 100 – 0. Das Ergebnis der Formel liegt im Bereich von 1 bis 0, (0,1). Je höher das Ergebnis der Formel, desto höher ist die Fairness zwischen den Teilnehmern. Die zu Beginn niedrigere Fairness lässt sich auf die zu Beginn auch hohe Standardabweichung beim Ladestand der einzelnen Fahrzeuge zurückführen. Je geringer die Standardabweichung allerdings wird, desto höher steigt auch der Wert der Fairness.
+\subsection{Slotted Aloha mit Teilnehmerzahl}
+Die Verwendung von SA participants wurde über den Zeitraum von einer Woche simuliert. Da bei der Verwendung dieses Controller Wartezeiten mithilfe von Zufallszahlen bestimmt werden, wurde die Simulation mit 10 verschiedenen Startwerten für die Bestimmung dieser Zufallszahlen durchgeführt. Dargestellt werde die Ergebnisse eines einzelnen Werktages, allerdings nicht die Ergebnisse eines einzelnen Durchlaufes, sondern der Mittelwert aller Durchläufe samt der zugehörigen Standartabweichung. Es wird der selbe Werktag wie bereits in Kapitel .. verwendet, um die Vergleichbarkeit der Ergebnisse zu gewährleisten. Dargestellt wird die Transformatorlast, die minimalen Werte der Spannung sowie die Anzahl der Teilnehmer, welche Leistung aus dem Netz beziehen. \\
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_par/TrafoLast_1911_5.png}
+	\caption{Trafolast bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAparTrafoLast}
+\end{figure}
 
-\subsection{SA-Part alleine}
-Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde. Fülltext über Fülltext, nur damit ich sehe wie es mir die Bilder bei mehr Text noch verschieben würde.
-\subsection{SA-waitingTime alleine}
+In der Abbildung \ref{Abb_SAparTrafoLast} ist die vom Transformator ans Niederspannungsnetz abgegeben Scheinleistung in kVA über den Verlauf eines Tages abgebildet. Der Regelbereich des Controllers ist im Falle der Transformatorlast nicht relevant, der VDE Controller lediglich die Spannung berücksichtigt.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_par/Vm10m7.png}
+	\caption{Spannung bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAparSpannung}
+\end{figure}
+Abbildung \ref{Abb_SAparSpannung} zeigt den Verlauf der minimalen Spannung über das gesamte Niederspannungsnetz hinweg. Auch hier werden die Mittelwerte von 10 Minuten Intervallen zur Überprüfung der Norm DIN EN 50160 abgebildet.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_par/Teilnehmer.png}
+	\caption{Teilnehmerzahl bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAparTeilnehmer}
+\end{figure}
+In der Abbildung \ref{Abb_SAparTeilnehmer} ist die Anzahl an Controllern abgebildet, welche Leistung für das Laden von Elektrofahrzeugen aus dem Netz beziehen. Leistungsbezieher, welche zwar Leistung beziehen, mit dieser aber kein Elektrofahrzeug laden, werden nicht dargestellt. \\
+Bis etwa 16:00 steigt sowohl die Grundlast und somit auch die Transformatorlast als ganzes zwar mehrmals an, jedoch fällt die Spannung dadurch nie bis zum Regelbereich hin ab. Um etwa 16:00 fällt die Spannung erstmals in den Regelbereich ab, steigt dann allerdings wieder an. Dieser Spannungsfall lässt sich auf einen erhöhten Leistungsbedarf von der steigenden Anzahl an Teilnehmern zurückführen. Da die Anzahl an Teilnehmer nur kurz ansteigt, steigt auch die Spannung wieder an. Nach 16:00 fällt der Minimalwert der Spannung für etwa 6 Stunden bis in den Regelbereich ab. Im selben Zeitraum kommt es auch zu einem erhöhten Leistungsabgabe am Transformator, und auch die Anzahl der Teilnehmer steigt an auf bis zu 18 Teilnehmer. Innerhalb der Zeitspanne in der sich die Spannungswerte im Regelbereich des Spannungscontrollers befinden schwanken die minimalen Werte nur gering, sie bewegen sich von 215 V bis 209 V, also innerhalb einer Spanne von 6 Volt. Diese geringe Schwankung lässt den Schluss zu das diese Variante des Controllers in der Lage ist die Spannung im Niederspannungsnetz effektiv zu regeln und auf einem ausreichenden Niveau zu halten. \\
+Im gesamten betrachteten Zeitraum von einer Woche kommt es zu keiner Unterschreitung der 195 Voltmarke sowie zu lediglich im Durchschnitt etwa 0,4 Unterschreitungen der 207 Volt Marke. Die Norm DIN EN 50160 wird folglich erfüllt, da die betrachteten Grenzwerte innerhalb der erlaubten Bereiche liegen.\\
+Über den Simulationszeitraum hinweg wurden im Schnitt 668,7 Situationen (+- 6,7\%) festgestellt, in denen Spannungswerte gemessen wurden, welche eine Spannungskollision verursachen könnten. In 553,9 dieser 668,7 Situationen (+- 5,9\%) trat tatsächlich eine Spannungskollision auf und eine Wartezeit wurde berechnet. Der Simulationszeitraum umfasst 10080 Zeitschritte für 110 Teilnehmer, folglich wurden 1108800 Situationen betrachtet. Die 553,9 Situationen stellen also 0,04\% der insgesamt betrachteten Situationen dar. Die hier verwendete Methodik reagiert nur auf Spannungskollisionen, die Menge von Situationen in denen eine Transformatorkollision auftreten könnte wurde dennoch erfasst. In durchschnittlich 7514,5 (+- 2,0\%) der betrachteten Situationen wurde ein Verstoß gegen den Grenzwert der Transformatorlast festgestellt, was etwa 0,67\% aller Situation entspricht.\\
+\begin{figure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/SA_par/SlottedAloha_participants_VDE_tau_10_soc_mean.png}
+        \subcaption{Durchschnittlicher Ladezustand eines Elektrofahrzeuges}
+        \label{ABB_SAparSocMEAN}
+	\end{subfigure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/SA_par/SlottedAloha_participants_VDE_tau_10_soc_std.png}
+        \subcaption{Durschschnittliche Standardabweichung des Ladezustandes}
+        \label{ABB_SAparSocSTD}
+	\end{subfigure}
+	\caption{ganz unten}
+\end{figure}
+Alle 557 gestarteten Ladeservices wurden erfolgreich abgeschlossen, somit ist die Qualitätserfahrung aller Ladevorgänge maximal. Abbildung \ref{ABB_SAparSocMEAN} zeigt den durchschnittlichen Ladezustand über den Verlauf eines Ladeservices hinweg, Abbildung \ref{ABB_SAparSocSTD} zeigt die zugehörige Standardabweichung. Ein schneller Anstieg des mittleren Ladezustands zeigt das Fahrzeuge bereits zu Beginn des jeweiligen Ladeservices mit dem Laden beginnen. Nach etwa 20\% der Zeit hat sich der mittlere Ladestand von etwa 85\% auf etwa 99\% erhöht und hat damit den Zielwert von 100\% fast erreicht. Die zu diesem Zeitpunkt mit etwas über 2,5\% ebenfalls bereits gesunkene Standardabweichung weist auf eine Angleichung der jeweiligen Werte hin.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.4]{img/SA_par/SlottedAloha_participants_VDE_tau_10_qoe.png}
+	\caption{Durchschnittlicher Qualitätserfahrung eines Elektrofahrzeuges}
+	\label{Abb_SAparFairness}
+\end{figure}
+Abbildung \ref{Abb_SAparFairness} zeigt die Fairness der jeweiligen Qualitätserfahrung über den Zeitverlauf der Ladeservices. Die Qualität des Ladeservices hängt ab von der Standardabweichung des Ladezustandes ab. Der schnelle Anstieg des Graphen, in den ersten 20\% der Zeit er höht sich der Wert von etwa 0,65 um etwa 0,3 auf ca. 0,95 und liegt so nach nur 20\% schon nahe am Idealwert von 1. Der Idealwert wird nach etwa 50\% der Zeit erreicht, ab diesem Zeitpunkt herrscht höchstmögliche Fairness zwischen den Teilnehmern.
+
+\subsection{Slotted Aloha mit Teilnehmerzahl und Fahrzeugparametern}
+Die Verwendung des Spannungskontrolles, welcher mit Slotted Aloha erweitert wurde und die Teilnehmeranzahl und die Fahrzeugparameter miteinbezieht. Diese Variante des Controller bestimmt mögliche Wartezeiten unter anderem mit der Hilfe von Zufallszahlen. Die Simulation wurde mit 10 verschieden Startwerten für die Bestimmung dieser Zufallszahlen durchgeführt. Dargestellt werde die Ergebnisse eines einzelnen Werktages, allerdings nicht die Ergebnisse eines einzelnen Durchlaufes, sondern der Mittelwert aller Durchläufe samt der zugehörigen Standartabweichung. Es wird der selbe Werktag wie bereits in Kapitel .. verwendet, um die Vergleichbarkeit der Ergebnisse zu gewährleisten. Dargestellt wird die Transformatorlast, die minimalen Werte der Spannung sowie die Anzahl der Teilnehmer, welche Leistung aus dem Netz beziehen. 
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_wT/TrafoLast3.png}
+	\caption{Trafolast bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAwtTrafoLast}
+\end{figure}
+
+In der Abbildung \ref{Abb_SAwtTrafoLast} ist die vom Transformator ans Niederspannungsnetz abgegeben Scheinleistung in kVA über den Verlauf eines Tages abgebildet. Der Regelbereich des Controllers ist im Falle der Transformatorlast nicht relevant, der VDE Controller lediglich die Spannung berücksichtigt.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_wt/Spannung_10m5.png}
+	\caption{Spannung bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAwtSpannung}
+\end{figure}
+
+Abbildung \ref{Abb_SAwtSpannung} zeigt den Verlauf der minimalen Spannung über das gesamte Niederspannungsnetz hinweg. Auch hier werden die Mittelwerte von 10 Minuten Intervallen zur Überprüfung der Norm DIN EN 50160 abgebildet.
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/SA_wT/Teilnehmer.png}
+	\caption{Teilnehmerzahl bei Verwendung des Spannungs-Controllers ...}
+	\label{Abb_SAwtTeilnehmer}
+\end{figure}
+
+In der Abbildung \ref{Abb_SAwtTeilnehmer} ist die Anzahl an Controllern abgebildet, welche Leistung für das Laden von Elektrofahrzeugen aus dem Netz beziehen. Leistungsbezieher, welche zwar Leistung beziehen, mit dieser aber kein Elektrofahrzeug laden, werden nicht dargestellt. \\
+Die Aktivitäten bis etwa 16:00 führen zwar immer wieder zu einem Absinken der Spannung, jedoch erreichen die Werte dabei den Regelbereich des Controllers nicht. Um etwa 16:00 fällt der Spannungswert das erste Mal bis in den Regelbereich hinein ab, erholt sich dann aber wieder. Dieser kurze Abfall lässt sich auf eine kurzfristig ansteigende Anzahl an Teilnehmer und so auch steigende Transformatorlast zurückführen. Von etwa 17:00 bis 21:00 befinden sich die Mittelwerte der Minimalspannung durchgängig im Regelungsbereich des Controllers. Die Werte bewegen sich im Bereich von 217 V bis 210 V, schwanken in diesem Zeitraum also nur um etwa 7 V. Die geringe Schwankung der Werte sowie fehlende Unterschreitungen des Regelbereiches lässt den Schluss zu das diese variante des Controllers dazu in der Lage ist die Spannung effektiv zu regeln und sie auf einem ausreichenden Niveau zu halten.
+Im gesamten betrachteten Zeitraum von einer Woche kommt es zu keiner Unterschreitung der 195 Voltmarke sowie zu lediglich im Durchschnitt etwa 0,4 Unterschreitungen der 207 Volt Marke. Die Norm DIN EN 50160 wird folglich erfüllt, da die betrachteten Grenzwerte innerhalb der erlaubten Bereiche liegen.\\
+Über den Simulationszeitraum hinweg wurden im Schnitt 392,6 Situationen (+- 12,2\%) festgestellt, in denen Spannungswerte gemessen wurden, welche eine Spannungskollision verursachen könnten. In 246,9 dieser 392,6 Situationen (+- 9,2\%) trat tatsächlich eine Spannungskollision auf und eine Wartezeit wurde berechnet. Der Simulationszeitraum umfasst 10080 Zeitschritte für 110 Teilnehmer, folglich wurden 1108800 Situationen betrachtet. Die 246,9 Situationen stellen also 0,02\% der insgesamt betrachteten Situationen dar. Die hier verwendete Methodik reagiert nur auf Spannungskollisionen, die Menge von Situationen in denen eine Transformatorkollision auftreten könnte wurde dennoch erfasst. In durchschnittlich 9271,5 (+- 3,3\%) der betrachteten Situationen wurde ein Verstoß gegen den Grenzwert der Transformatorlast festgestellt, was etwa 0,83\% aller Situationen entspricht.\\
+\begin{figure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/SA_wT/SlottedAloha_waitingTime_VDE_tau_6_soc_mean.png}
+        \subcaption{Durchschnittlicher Ladezustand eines Elektrofahrzeuges}
+        \label{ABB_SAwtSocMEAN}
+	\end{subfigure}
+	\begin{subfigure}{0.49\linewidth}
+		\includegraphics[width=\linewidth]{img/SA_wT/SlottedAloha_waitingTime_VDE_tau_6_soc_std.png}
+        \subcaption{Durschschnittliche Standardabweichung des Ladezustandes}
+        \label{ABB_SAwtSocSTD}
+	\end{subfigure}
+	\caption{ganz unten}
+\end{figure}
+
+Alle 557 gestarteten Ladeservices wurden erfolgreich abgeschlossen, somit ist die Qualitätserfahrung aller Ladevorgänge maximal. Abbildung \ref{ABB_SAwtSocMEAN} zeigt den durchschnittlichen Ladezustand über den Verlauf eines Ladeservices hinweg, Abbildung \ref{ABB_SAwtSocSTD} zeigt die zugehörige Standardabweichung. Ein schneller Anstieg des mittleren Ladezustands zeigt das Fahrzeuge bereits zu Beginn des jeweiligen Ladeservices mit dem Laden beginnen. Nach etwa 20\% der Zeit hat sich der mittlere Ladestand von etwa 85\% auf etwa 99\% erhöht und hat damit den Zielwert von 100\% fast erreicht. Die zu diesem Zeitpunkt mit etwas unter 5\% ebenfalls bereits gesunkene Standardabweichung weist auf eine Angleichung der jeweiligen Werte hin.\\
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.4]{img/SA_wT/SlottedAloha_waitingTime_VDE_tau_6_qoe.png}
+	\caption{Durchschnittlicher Qualitätserfahrung eines Elektrofahrzeuges}
+	\label{Abb_SAwTFairness}
+\end{figure}
+
+Abbildung \ref{Abb_SAwTFairness} zeigt die Fairness der jeweiligen Qualitätserfahrung über den Zeitverlauf der Ladeservices. Die Qualität des Ladeservices hängt ab von der Standardabweichung des Ladezustandes ab. Der schnelle Anstieg des Graphen, in den ersten 20\% der Zeit er höht sich der Wert von etwa 0,65 um etwa 0,25 auf ca. 0,9 und liegt so nach nur 20\% schon nahe am Idealwert von 1. Der Idealwert wird nach etwa 50\% der Zeit erreicht, ab diesem Zeitpunkt herrscht höchstmögliche Fairness zwischen den Teilnehmern.
+
 \subsection{SA-Part-trafo alleine}
 \subsection{SA-waitingTime-trafo alleine}
 \section{Analyse und Auswertung}
 \subsection{SA-part mit SA-waitingTime}
 \subsection{SA-part-trafo mit SA-waitingTime-trafo}
 \subsection{VDE mit (SA-part, SA-waitingTime)}
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/ohneTrafo/Teilnehmer2.png}
+	\caption{Teilnehmerzahl ohne Trafo}
+	\label{Abb_oTTeilnehmer}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/ohneTrafo/Spannung2.png}
+	\caption{Spannung ohne Trafo}
+	\label{Abb_oTSpannung}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=0.7]{img/ohneTrafo/TrafoLast3.png}
+	\caption{Trafolast ohne Trafo}
+	\label{Abb_oTTrafo}
+\end{figure}
+
 \subsection{(SA-part, SA-waitingTime) mit (SA-part-trafo, SA-waitingTime-trafo)}
